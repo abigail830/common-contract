@@ -8,6 +8,26 @@
     <artifactId>common-contracts</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <scm>
+        <connection>scm:git:https://github.com/abigail830/common-contract.git</connection>
+        <developerConnection>scm:git:https://github.com/abigail830/common-contract.git</developerConnection>
+        <url>https://github.com/abigail830/common-contract</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>maven-snapshots</name>
+            <url>http://nexus.saraqian.cn/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus</id>
+            <name>maven-releases</name>
+            <url>http://nexus.saraqian.cn/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <resources>
             <resource>
@@ -18,26 +38,35 @@
                 </includes>
             </resource>
         </resources>
-        <!--&lt;!&ndash;<plugins>&ndash;&gt;-->
-            <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
-                <!--&lt;!&ndash;<groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
-                <!--&lt;!&ndash;<artifactId>maven-assembly-plugin</artifactId>&ndash;&gt;-->
-                <!--&lt;!&ndash;<executions>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<execution>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<id>contracts</id>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<phase>prepare-package</phase>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<goals>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<goal>single</goal>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</goals>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<attach>true</attach>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<descriptor>${basedir}/src/assembly/contracts.xml</descriptor>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<appendAssemblyId>false</appendAssemblyId>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</execution>&ndash;&gt;-->
-                <!--&lt;!&ndash;</executions>&ndash;&gt;-->
-            <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
-        <!--&lt;!&ndash;</plugins>&ndash;&gt;-->
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <localCheckout>true</localCheckout>
+                </configuration>
+            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-assembly-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>contracts</id>-->
+                        <!--<phase>prepare-package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>single</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<attach>true</attach>-->
+                            <!--<descriptor>${basedir}/src/assembly/contracts.xml</descriptor>-->
+                            <!--<appendAssemblyId>false</appendAssemblyId>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+        </plugins>
     </build>
 
 </project>
