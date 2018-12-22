@@ -1,6 +1,6 @@
 request:
   method: GET
-  url: /health
+  url: /name
   headers:
     Content-Type: application/json
 
@@ -9,5 +9,5 @@ response:
   headers:
     Content-Type: application/json;charset=UTF-8
   body: |
-    { "status": "UP" }
+    { "name": "ContractProvider" }
 
